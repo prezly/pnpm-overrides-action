@@ -1,0 +1,13 @@
+name: 'Set pnpm overrides'
+description: 'Github Action to set `pnpm.overrides` in package.json'
+
+runs:
+  using: "composite"
+  steps:
+    - name: Set `pnpm.overrides` in package.json
+      uses: jossef/action-set-json-field@v2.1
+      with:
+        file: package.json
+        parse_json: true
+        field: pnpm.overrides
+        value: ${{ toJSON(inputs) }}
